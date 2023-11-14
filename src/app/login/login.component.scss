@@ -1,0 +1,72 @@
+.navbar {
+    // border: 2px solid yellow;
+    height: 11.5vh;
+    // font-size: 2.5em;
+
+    .container-fluid {
+        // border: 2px solid yellow;
+        display: flex;
+        flex-direction: flex-end;
+
+        .nav-item{
+            // border: 2px solid yellow;
+            margin-left: 70vw;
+            display: flex;
+            flex-direction: row;
+
+            img {
+                max-width: 100%;
+                max-height: 80%;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+section{
+    height: 70vh;
+
+    .card {
+        // border: 2px solid yellow;
+        border-radius: 0;
+        padding: 30px 25px;
+        margin: 4% 20%;
+        overflow: hidden;
+        max-width: 630px;
+        min-height: 50vh;
+
+        .title {
+            font-weight: thin;
+            // font-size: 20px;
+
+            h1 {
+                font-family: Open Sans Light,sans-serif;
+                line-height: 30px;
+                font-size: 26px;
+            }
+        }
+    }
+}
+
+.continue {
+    width: 100%;
+    background-color: #0A7099;
+    height: 3em;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+
+    &:hover {
+        background-color: #095877;
+    }
+}
+
+.error {
+    color: red;
+}
+
+img {
+    max-height: 50%;
+    max-width: 50%;
+    border-radius: 50%;
+}

@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<section>
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-body">
+                <form [formGroup]="receiverForm" (ngSubmit)="onSubmit()">
+                    <div class="title col-xs-6">
+                        <h1> {{ this.receiverArray && this.receiverArray.firstName }} {{ this.receiverArray && this.receiverArray.middleName }} {{ this.receiverArray && this.receiverArray.lastName }}</h1>
+                    </div>
+                    <!-- <p>For your safety, make sure you know your receiver.</p> -->
+                    <div class="card" style="height: 8vh;">
+                        <select name="" id="" style="height: 8vh;" formControlName="country">
+                            <option *ngFor="let c of countryName">{{ c.name }}</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="rec-info">
+                        <!-- <h2>Receiver's personal information</h2> -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" formControlName="firstName" [(ngModel)]="this.receiverArray && this.receiverArray.firstName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's First Name">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" formControlName="lastName" [(ngModel)]="this.receiverArray && this.receiverArray.lastName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's Last Name">
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <input type="text" formControlName="middleName" [(ngModel)]="this.receiverArray && this.receiverArray.middleName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's Middle Name(optional)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 mt-3">
+                            <label for="">Type</label>
+                            <select name="Type" [(ngModel)]="this.receiverArray && this.receiverArray.type" id="" style="width: 100%; height: 8vh;" formControlName="type">
+                                <!-- <option value="0">Type</option> -->
+                                <option value="Mobile">Mobile</option>
+                                <option value="Phone">Phone</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 mt-3">
+                            <label for="">Country Code</label>
+                            <select name="Type" [(ngModel)]="this.receiverArray && this.receiverArray.countryCode" id="" style="width: 100%; height: 8vh;" formControlName="countryCode">
+                                <!-- <option value="0">Country Code</option> -->
+                                <option value="+91">+91</option>
+                                <option value="+12">+12</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8 mt-3">
+                            <label for="">Phone Number</label>
+                            <input type="number" [(ngModel)]="this.receiverArray && this.receiverArray.phoneNumber" formControlName="phoneNumber" placeholder="Phone Number" style="width: 100%; height: 8vh;">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn continue-btn btn-primary mt-3">
+                        Update
+                    </button>
+                    <button type="button" class="btn continue-btn btn-outline mt-3">
+                        <a routerLink="/" style="color: #07a;">Cancel</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,75 @@
+.container {
+    // border: 2px solid black;
+    max-width: 600px;
+
+    .card {
+        border-radius: 0;
+        color: gray;
+        font-size: 18px;
+        // box-shadow: 0 0 10px 3px black;
+
+        .card-body {
+            // display: flex;
+            // flex-direction: row;
+            // cursor: pointer;
+
+            h5 {
+                margin-top: 0.6em;
+            }
+
+            .icons {
+                // border: 2px solid black;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .edit {
+                // border: 2px solid black;
+                color: #0A7099;
+                // text-align: center;
+                // margin-top: 0.6em;
+                // margin-left: 15em;
+                // padding: 10px;
+                // float: right;
+                // cursor: pointer;
+
+                button {
+                    border: none;
+                    background: none;
+                    color: #0A7099;
+                }
+            }
+
+            .delete {
+                color: #0A7099;
+                // text-align: center;
+                // margin-left: 15px;
+                // cursor: pointer;
+
+                button {
+                    border: none;
+                    background: none;
+                    color: #0A7099;
+                }
+            }
+
+            .vl {
+                border-left: 1px solid gray;
+                height: 50px;
+                // margin-left: 15px;
+            }
+        }
+    }
+
+    .add {
+        border: none;
+        background-color: #0A7099;
+        width: 100%;
+        color: white;
+        height: 10vh;
+
+        &:hover {
+            background-color: #08526f;
+        }
+    }
+}

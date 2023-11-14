@@ -1,0 +1,75 @@
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <!-- <img src="src/assets/logo.wu.big.svg"> -->
+                <img src="./../../assets/wu-logo.png" alt="">
+                Western Union
+            </a>
+            <div class="lang">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <img src="./../../assets/flag.png" alt="">
+                        <span style="color: white; font-size: 20px">(EN)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="title col-md-10">
+                        <h1>Log In</h1>
+                    </div>
+                    <div class="col-md-2"> 
+                        <a href="#" style="color: #0A7099 !important;">Register</a>
+                    </div>
+                </div>
+                <form #f="ngForm" (ngSubmit)="onSubmit(f)" [name]="loginForm">
+                    <div class="mb-3 mt-3" [formGroup]="loginForm">
+                      <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+                      <input 
+                      type="email" 
+                      style="border-radius: 0; border: 1px solid black;" 
+                      class="form-control" 
+                      id="email" 
+                      aria-describedby="emailHelp" 
+                      placeholder="Email or Username"
+                      ng-model="email"
+                      name="email"
+                      formControlName="email"
+                      required>
+                      <span class="error" *ngIf="loginForm.invalid && loginForm.touched">Please check email and try again.</span>
+                      <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                    </div>
+                    <div class="mb-3 form-check" style="margin-left: 65vh;">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1" style="color: #0A7099;">Remember Me</label>
+                    </div>
+                    <div class="mb-3">
+                      <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+                      <input 
+                      type="password" 
+                      style="border-radius: 0; border: 1px solid black;" 
+                      class="form-control" 
+                      id="password" 
+                      placeholder="Password"
+                      required>
+                      <span class="error" *ngIf="loginForm.invalid && loginForm.touched">Please check password and try again.</span>
+                      <p style="color: #0A7099; margin-left: 60vh; margin-top: 1em;">Need Help Logging in?</p>
+                    </div>
+                    <button type="submit" [disabled]="f.invalid" class="continue">
+                        Continue
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>
