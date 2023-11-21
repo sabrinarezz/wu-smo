@@ -14,6 +14,8 @@ import { environment } from 'src/environments/environment.development';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditReceiverComponent } from './edit-receiver/edit-receiver.component';
+import { HamburgerComponent } from './layouts/hamburger/hamburger.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { EditReceiverComponent } from './edit-receiver/edit-receiver.component';
     HomeComponent,
     ReceiversComponent,
     AddReceiversComponent,
-    EditReceiverComponent
+    EditReceiverComponent,
+    HamburgerComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { EditReceiverComponent } from './edit-receiver/edit-receiver.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

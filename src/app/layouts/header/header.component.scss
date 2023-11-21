@@ -9,6 +9,10 @@
         display: flex;
         flex-direction: flex-end;
 
+        .col {
+            display: flex;
+            flex-direction: row;
+        }
         .lang {
             display: flex;
             flex-direction: column;

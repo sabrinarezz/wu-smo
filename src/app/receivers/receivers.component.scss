@@ -9,8 +9,9 @@
         // box-shadow: 0 0 10px 3px black;
 
         .card-body {
-            // display: flex;
-            // flex-direction: row;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
             // cursor: pointer;
 
             h5 {
@@ -21,23 +22,7 @@
                 // border: 2px solid black;
                 display: flex;
                 flex-direction: row;
-            }
-
-            .edit {
-                // border: 2px solid black;
-                color: #0A7099;
-                // text-align: center;
-                // margin-top: 0.6em;
-                // margin-left: 15em;
-                // padding: 10px;
-                // float: right;
-                // cursor: pointer;
-
-                button {
-                    border: none;
-                    background: none;
-                    color: #0A7099;
-                }
+                // margin-left: -500px;
             }
 
             .delete {
@@ -71,5 +56,27 @@
         &:hover {
             background-color: #08526f;
         }
+    }
+}
+
+.dropdown {
+    // border: 2px solid yellow;
+    // padding: 10px;
+
+    .dropdown-container {
+        // border: 2px solid yellow;
+        position: absolute;
+        top: 35px;
+       
+        // .dropdown-menu {
+        //     display: flex;
+        //     flex-direction: row;
+        // }
+    }
+
+    button {
+        border: none;
+        background: none;
+        color: #0A7099;
     }
 }
