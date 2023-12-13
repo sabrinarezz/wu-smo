@@ -1,13 +1,20 @@
 <app-header></app-header>
 
-<section style="margin-top: 8vh; margin-bottom: 8vh;">
+<section class="mb-5" style="margin-top: 6vh; margin-bottom: 8vh;">
     <div class="container">
-        <div class="card">
+        <div class="card receiver-container">
             <div class="card-body">
                 <form [formGroup]="receiverForm" (ngSubmit)="onSubmit()">
                     <div class="title col-xs-6">
-                        <h1>Receiver's Information</h1>
+                        <h2>Receiver's Information</h2>
                     </div>
+                    <!-- <div class="r-info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+                          </svg>
+                        <p>Add a new receiver</p>
+                    </div> -->
                     <p>For your safety, make sure you know your receiver.</p>
                     <div class="card" style="height: 8vh;">
                         <select #country name="" id="" style="height: 8vh;" formControlName="country" (change)="onOptionSelected(country.value)">
@@ -17,49 +24,61 @@
                     <br>
                     <br>
                     <div class="rec-info">
-                        <h2>Receiver's personal information</h2>
+                        <h4>Receiver's personal information</h4>
                         <div class="row">
-                            <div class="col-md-6" *ngIf="!countryName.fn">
-                                <input type="text" formControlName="firstName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's First Name">
+                            <div class="col-md-6 form-floating p-1" *ngIf="!countryName.fn">
+                                <input type="text" class="form-control" id="floating-input" formControlName="firstName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's First Name" required>
+                                <label class="floating-input">Receiver's First Name</label>
+                                <span class="error" *ngIf="receiverForm.controls['firstName'].invalid && receiverForm.controls['firstName'].touched">First Name is required!</span>
                             </div>
-                            <div class="col-md-6" *ngIf="!countryName.fn">
-                                <input type="text" formControlName="lastName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's Last Name">
+                            <div class="col-md-6 form-floating p-1" *ngIf="!countryName.fn">
+                                <input type="text" class="form-control" id="floating-input" formControlName="lastName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's Last Name">
+                                <label class="floating-input">Receiver's Last Name</label>
+                                <span class="error" *ngIf="receiverForm.controls['lastName'].invalid && receiverForm.controls['lastName'].touched">Last Name is required!</span>
                             </div>
-                            <div class="col-md-6 mt-3" *ngIf="showHideMn">
-                                <input type="text" formControlName="middleName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's Middle Name">
+                            <div class="col-md-6 form-floating p-1 mt-3" *ngIf="showHideMn">
+                                <input type="text" class="form-control" id="floating-input" formControlName="middleName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's Middle Name">
+                                <label class="floating-input">Receiver's Middle Name</label>
+                                <span class="error" *ngIf="receiverForm.controls['middleName'].invalid || receiverForm.controls['middleName'].touched">Middle Name is required!</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 mt-3">
-                            <label for="">Type</label>
-                            <select name="Type" id="" style="width: 100%; height: 8vh;" formControlName="type">
+                        <div class="col-md-2 form-floating p-1 mt-3">
+                            <select name="Type" class="form-control" id="floating-input" style="width: 100%; height: 8vh;" formControlName="type">
                                 <!-- <option value="0">Type</option> -->
                                 <option value="Mobile">Mobile</option>
                                 <option value="Phone">Phone</option>
                             </select>
+                            <label for="" class="floating-input">Type</label>
                         </div>
-                        <div class="col-md-2 mt-3">
-                            <label for="">Country Code</label>
-                            <select name="Type" id="" style="width: 100%; height: 8vh;" formControlName="countryCode">
+                        <div class="col-md-2 form-floating p-1 mt-3">
+                            <!-- <label for="">Country Code</label> -->
+                            <select name="Type" class="form-control" id="floating-input" style="width: 100%; height: 8vh;" formControlName="countryCode">
                                 <!-- <option value="0">Country Code</option> -->
                                 <option value="+91">+91</option>
                                 <option value="+12">+12</option>
                             </select>
+                            <label for="" class="floating-input">Country Code</label>
                         </div>
-                        <div class="col-md-8 mt-3">
-                            <label for="">Phone Number</label>
-                            <input type="number" formControlName="phoneNumber" placeholder="Phone Number" style="width: 100%; height: 8vh;">
+                        <div class="col-md-8 form-floating p-1 mt-3">
+                            <input type="number" class="form-control" id="floating-input" formControlName="phoneNumber" placeholder="Phone Number" style="width: 100%; height: 8vh;">
+                            <label for="" class="floating-input">Phone Number</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn continue-btn btn-primary mt-3">
+                    <!-- <div class="bank-info">
+                        
+                    </div> -->
+                    <button type="submit" class="save-btn mt-4">
                         Continue
                     </button>
                     <button type="button" class="btn continue-btn btn-outline mt-3">
-                        <a routerLink="/" style="color: #07a;">Cancel</a>
+                        <a routerLink="/receivers" style="color: #07a;">Cancel</a>
                     </button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<app-footer></app-footer>

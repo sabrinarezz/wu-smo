@@ -1,4 +1,4 @@
-$burgerWidth: 24px;
+$burgerWidth: 34px;
 $burgerBarHeight: 1px;
 $burgerBarColor: white;
 
@@ -69,7 +69,7 @@ $burgerBarColor: white;
     left: -100px;
     height: 543px;
     width: 250px;
-    overflow: scroll;
+    // overflow: scroll;
 
     li {
         color: rgb(248, 248, 82);

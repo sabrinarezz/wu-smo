@@ -11,6 +11,7 @@ import { ReceiversService } from '../services/receivers.service';
 import { of, throwError } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import firebase from 'firebase/compat';
+import { FooterComponent } from '../layouts/footer/footer.component';
 
 describe('EditReceiverComponent', () => {
   let component: EditReceiverComponent;
@@ -50,7 +51,9 @@ describe('EditReceiverComponent', () => {
     TestBed.configureTestingModule({
       declarations: [EditReceiverComponent,
                     HeaderComponent,
-                    HamburgerComponent],
+                    HamburgerComponent,
+                    FooterComponent
+                  ],
       imports: [RouterTestingModule,
                 AngularFireModule.initializeApp(environment.firebase),
                 AngularFirestoreModule,
@@ -92,7 +95,7 @@ describe('EditReceiverComponent', () => {
       firstName: undefined,
       middleName: undefined,
       lastName: undefined,
-      country: '',
+      country: undefined,
       countryCode: undefined,
       type: undefined,
       phoneNumber: undefined
@@ -118,7 +121,7 @@ describe('EditReceiverComponent', () => {
     expect(component.receiverForm.get('firstName')?.value).toEqual(undefined);
     expect(component.receiverForm.get('middleName')?.value).toEqual(undefined);
     expect(component.receiverForm.get('lastName')?.value).toEqual(undefined);
-    expect(component.receiverForm.get('country')?.value).toEqual('');
+    expect(component.receiverForm.get('country')?.value).toEqual(undefined);
     expect(component.receiverForm.get('countryCode')?.value).toEqual(undefined);
     expect(component.receiverForm.get('type')?.value).toEqual(undefined);
     expect(component.receiverForm.get('phoneNumber')?.value).toEqual(undefined);
@@ -149,7 +152,7 @@ describe('EditReceiverComponent', () => {
     expect(component.receiverForm.get('firstName')?.value).toBe(undefined);
     expect(component.receiverForm.get('middleName')?.value).toBe(undefined);
     expect(component.receiverForm.get('lastName')?.value).toBe(undefined);
-    expect(component.receiverForm.get('country')?.value).toBe('');
+    expect(component.receiverForm.get('country')?.value).toBe(undefined);
     expect(component.receiverForm.get('countryCode')?.value).toBe(undefined);
     expect(component.receiverForm.get('type')?.value).toBe(undefined);
     expect(component.receiverForm.get('phoneNumber')?.value).toBe(undefined);

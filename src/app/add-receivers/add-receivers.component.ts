@@ -26,8 +26,6 @@ export class AddReceiversComponent {
   });
 
   receiverArray!: any;
-  // fn = true;
-  // country!: Country;
   countryName: any = [
     {
       name: 'India',
@@ -73,14 +71,13 @@ export class AddReceiversComponent {
     }
 ];
   constructor ( private rs: ReceiversService, private router: Router ) {
-    // console.log(this.countryName);
+    console.log('Form: ', this.receiverForm);
     this.rs.loadData().subscribe( val => {
       console.log(val);
       this.receiverArray = val;
     })
    }
 
-  
   onOptionSelected(value: string) {
     // console.log(value);
     //let selCont: any[];

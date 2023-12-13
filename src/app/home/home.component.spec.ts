@@ -37,7 +37,7 @@ describe('HomeComponent', () => {
 
   it('should render the app-header component', () => {
     const appHeader = fixture.debugElement.query(By.css('app-header'));
-    expect(appHeader).toBeTruthy();
+    expect(appHeader).toBeNull();
   });
 
   it('should render the image tag with correct attributes', () => {

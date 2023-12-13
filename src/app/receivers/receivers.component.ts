@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ReceiversService } from '../services/receivers.service';
+import { Receivers } from '../models/receivers.model';
 
 @Component({
   selector: 'app-receivers',
@@ -16,19 +17,26 @@ export class ReceiversComponent {
 
   active = false;
   showDropdown = false;
+  showDetails: boolean = false;
 
+  constructor( private rs: ReceiversService ) {
+    // console.log('receivers: ', this.receiverArray);
+    
+    this.active = this.init || false;
+    this.rs.loadData().subscribe( val => {
+      console.log(val);
+      this.receiverArray = val;
+    })
+  }
+  
   onClick() {
     this.active = !this.active;
     this.opened.emit();
     this.showDropdown = !this.showDropdown;
   }
 
-  constructor( private rs: ReceiversService ) {
-    this.active = this.init || false;
-    this.rs.loadData().subscribe( val => {
-      console.log(val);
-      this.receiverArray = val;
-    })
+  showReceiverDetails(id: any) {
+    this.showDetails = !this.showDetails;
   }
 
   onDelete( id: any) {

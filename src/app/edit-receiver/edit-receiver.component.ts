@@ -14,6 +14,7 @@ export class EditReceiverComponent {
   receiverArray!: any;
   formReceiver!: Receivers;
   receiverId!: any;
+  showHideMn: boolean = true;
 
   receiverForm: FormGroup = new FormGroup({
     firstName: new FormControl(''),
@@ -71,6 +72,8 @@ export class EditReceiverComponent {
   ];
 
   constructor( private rs: ReceiversService, private route: ActivatedRoute, private router: Router ) {
+    console.log(this.receiverForm);
+    
     this.route.paramMap.subscribe( params => {
       // console.log(params);
       this.receiverId = params.get('rid');
@@ -81,6 +84,18 @@ export class EditReceiverComponent {
         console.log('Edit: ', this.receiverArray)
       })
     })
+  }
+
+  onOptionSelected(value: string) {
+    // console.log(value);
+    //let selCont: any[];
+    this.countryName.forEach((selCont: any) => {
+      if(selCont.name === value)
+      {
+        this.showHideMn = selCont.mn;
+      }
+    });
+    console.log(this.showHideMn);  
   }
 
   onSubmit() {

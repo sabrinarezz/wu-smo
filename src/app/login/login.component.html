@@ -18,7 +18,7 @@
     </div>
 </nav>
 
-<section>
+<section class="mb-5">
     <div class="container">
         <div class="card">
             <div class="card-body">
@@ -31,36 +31,43 @@
                     </div>
                 </div>
                 <form #f="ngForm" (ngSubmit)="onSubmit(f)" [name]="loginForm">
-                    <div class="mb-3 mt-3" [formGroup]="loginForm">
+                    <div class="form-floating mb-3 mt-3" [formGroup]="loginForm">
                       <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+                      <!-- <div class="input-icons">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path class="icon" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                        </svg>
+                      </div> -->
                       <input 
                       type="email" 
                       style="border-radius: 0; border: 1px solid black;" 
-                      class="form-control" 
-                      id="email" 
+                      class="form-control input-field" 
+                      id="email floating-input" 
                       aria-describedby="emailHelp" 
                       placeholder="Email or Username"
                       ng-model="email"
                       name="email"
                       formControlName="email"
                       required>
-                      <span class="error" *ngIf="loginForm.invalid && loginForm.touched">Please check email and try again.</span>
+                      <label class="floating-input">Email Address</label>
+                      <span class="error" *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">Please check email and try again.</span>
                       <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                     </div>
                     <div class="mb-3 form-check" style="margin-left: 65vh;">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1" style="color: #0A7099;">Remember Me</label>
                     </div>
-                    <div class="mb-3">
+                    <div class="form-floating mb-3">
                       <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
                       <input 
                       type="password" 
                       style="border-radius: 0; border: 1px solid black;" 
                       class="form-control" 
-                      id="password" 
+                      id="password floating input" 
                       placeholder="Password"
                       required>
-                      <span class="error" *ngIf="loginForm.invalid && loginForm.touched">Please check password and try again.</span>
+                      <label class="floating-input">Password</label>
+                      <span class="error" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">Please check password and try again.</span>
                       <p style="color: #0A7099; margin-left: 60vh; margin-top: 1em;">Need Help Logging in?</p>
                     </div>
                     <button type="submit" [disabled]="f.invalid" class="continue">

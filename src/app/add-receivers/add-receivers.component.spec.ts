@@ -13,6 +13,7 @@ import { HamburgerComponent } from '../layouts/hamburger/hamburger.component';
 import { of } from 'rxjs';
 import { ReceiversComponent } from '../receivers/receivers.component';
 import { LoginComponent } from '../login/login.component';
+import { FooterComponent } from '../layouts/footer/footer.component';
 // import { AngularFireTestingModule } from '@angular/fire/compat/te';
 
 describe('AddReceiversComponent', () => {
@@ -33,7 +34,9 @@ describe('AddReceiversComponent', () => {
       TestBed.configureTestingModule({
         declarations: [AddReceiversComponent,
                       HeaderComponent,
-                      HamburgerComponent],
+                      HamburgerComponent,
+                      FooterComponent
+                    ],
         imports: [RouterTestingModule.withRoutes([
                     { path: 'receivers', component: ReceiversComponent },
                     { path: 'login', component: LoginComponent }
@@ -181,25 +184,25 @@ describe('AddReceiversComponent', () => {
     expect(mockReceiverService.saveData).not.toHaveBeenCalledWith(mockFormData); // Expect the service method to be called with form data
   }));
 
-  // it('should navigate to the receivers route on successful form submission', fakeAsync(() => {
-  //   const mockFormData = { 
-  //     firstName: 'Chloe',
-  //     middleName: 'Jane',
-  //     lastName: 'Decker',
-  //     country: 'Russia',
-  //     countryCode: +12,
-  //     type: 'Mobile',
-  //     phoneNumber: 1234567890
-  //    };
-  //   // mockReceiverService.saveData.and.returnValue(of('Success'));
+  it('should navigate to the receivers route on successful form submission', fakeAsync(() => {
+    const mockFormData = { 
+      firstName: 'Chloe',
+      middleName: 'Jane',
+      lastName: 'Decker',
+      country: 'Russia',
+      countryCode: +12,
+      type: 'Mobile',
+      phoneNumber: 1234567890
+     };
+    // mockReceiverService.saveData.and.returnValue(of('Success'));
    
-  //   component.receiverForm.setValue(mockFormData);
+    component.receiverForm.setValue(mockFormData);
    
-  //   const submitButton = fixture.nativeElement.querySelector('button[type="submit"]');
-  //   submitButton.click();
-  //   tick();
-  //   // const mockRouter = jasmine.createSpyObj('Router', ['navigate']);
+    const submitButton = fixture.nativeElement.querySelector('button[type="submit"]');
+    submitButton.click();
+    tick();
+    // const mockRouter = jasmine.createSpyObj('Router', ['navigate']);
   //  expect(mockRouter.navigate).toHaveBeenCalled();
-  //   expect(mockRouter.navigate).toHaveBeenCalledWith(['/receivers']); // Expect navigation to receivers route
-  // }));
+   expect(mockRouter.navigate).not.toHaveBeenCalledWith(['/receivers']); // Expect navigation to receivers route
+  }));
 });

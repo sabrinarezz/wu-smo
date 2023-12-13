@@ -1,0 +1,96 @@
+<app-header></app-header>
+
+<section class="mb-5" style="margin-top: 6vh; margin-bottom: 8vh;">
+    <div class="container">
+        <div class="card receiver-container">
+            <div class="card-body">
+                <form [formGroup]="receiverForm" (ngSubmit)="onSubmit()">
+                    <div class="r-info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+                          </svg>
+                        <p>Add a new receiver</p>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="rec-info">
+                        <h4>Receiver's personal information</h4>
+                        <div class="row">
+                            <div class="col-md-6 form-floating p-1">
+                                <input type="text" class="form-control" id="floating-input" formControlName="firstName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's First Name" required>
+                                <label class="floating-input">Receiver's First Name</label>
+                                <span class="error" *ngIf="receiverForm.controls['firstName'].invalid && receiverForm.controls['firstName'].touched">First Name is required!</span>
+                            </div>
+                            <div class="col-md-6 form-floating p-1">
+                                <input type="text" class="form-control" id="floating-input" formControlName="lastName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's Last Name" required>
+                                <label class="floating-input">Receiver's Last Name</label>
+                                <span class="error" *ngIf="receiverForm.controls['lastName'].invalid && receiverForm.controls['lastName'].touched">Last Name is required!</span>
+                            </div>
+                            <div class="col-md-6 form-floating p-1 mt-3">
+                                <input type="text" class="form-control" id="floating-input" formControlName="middleName" style="min-width: 100%; min-height: 8vh;" placeholder="Receiver's Middle Name" required>
+                                <label class="floating-input">Receiver's Middle Name (optional)</label>
+                                <!-- <span class="error" *ngIf="receiverForm.controls['middleName'].invalid || receiverForm.controls['middleName'].touched">Middle Name is required!</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 form-floating p-1 mt-3">
+                            <select name="Type" class="form-control" id="floating-input" style="width: 100%; height: 8vh;" formControlName="type">
+                                <!-- <option value="0">Type</option> -->
+                                <option value="Mobile">Mobile</option>
+                                <option value="Phone">Phone</option>
+                            </select>
+                            <label for="" class="floating-input">Type</label>
+                        </div>
+                        <div class="col-md-2 form-floating p-1 mt-3">
+                            <!-- <label for="">Country Code</label> -->
+                            <select name="Type" class="form-control" id="floating-input" style="width: 100%; height: 8vh;" formControlName="countryCode">
+                                <!-- <option value="0">Country Code</option> -->
+                                <option value="+91">+91</option>
+                                <option value="+12">+12</option>
+                            </select>
+                            <label for="" class="floating-input">Country Code</label>
+                        </div>
+                        <div class="col-md-8 form-floating p-1 mt-3">
+                            <input type="number" class="form-control" id="floating-input" formControlName="phoneNumber" placeholder="Phone Number" style="width: 100%; height: 8vh;">
+                            <label for="" class="floating-input">Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="bank-info mt-3">
+                        <h5>Receiver's Bank Account Information</h5>
+                        <div class="card" style="height: 8vh;">
+                            <select #country name="" id="" style="height: 8vh;" formControlName="bank">
+                                <!-- <option disabled>Choose Bank</option> -->
+                                <option *ngFor="let c of countryName">{{ c.bank }}</option>
+                            </select>
+                        </div>
+                        <div class="form-floating p-1 mt-3">
+                            <input type="number" class="form-control" id="floating-input" formControlName="accNo" style="width: 100%; height: 8vh;">
+                            <label for="" class="floating-input">Account Number</label>
+                        </div>
+                        <div class="form-floating p-1 mt-3">
+                            <input type="number" class="form-control" id="floating-input" formControlName="accNo" style="width: 100%; height: 8vh;">
+                            <label for="" class="floating-input">Re-enter account Number</label>
+                        </div>
+                    </div>
+                    <div class="purpose-of-txn">
+                        <h5>Purpose Of Transaction</h5>
+                        <select #country name="" id="" style="height: 8vh;" formControlName="txn">
+                            <option value="1">Family Support/Living Expenses</option>
+                            <option value="2">Education Fee</option>
+                            <option value="3">Saving/Investments</option>
+                            <option value="4">Rent/Mortgage</option>
+                            <option value="5">Emergency/Medical Aid</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="save-btn mt-4">
+                        Continue
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

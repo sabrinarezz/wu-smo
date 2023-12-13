@@ -1,0 +1,168 @@
+<app-header></app-header>
+
+<section class="mt-4">
+    <div class="container p-3">
+        <div class="col-md-7 send">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Send Money Online</h4>
+                    <form [formGroup]="sendMoneyForm" (ngSubmit)="onSubmit()">
+                        <h5>Your receiver's country and send money</h5>
+                        <div class="card form-floating">
+                            <select [(ngModel)]="selectedCountry" (change)="onCountrySelected()" class="form-control" #country formControlName="country">
+                                <option *ngFor="let c of countries" [ngValue]="c">{{ c.name }}</option>
+                            </select>
+                            <label class="floating-input" style="font-size: 14px;"><b>Send to</b></label>
+                        </div>
+                        <h6 class="sub-script">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-brightness-low" viewBox="0 0 16 16">
+                                <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8m.5-9.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707m-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707m7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707M3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707"/>
+                            </svg>
+                            <div class="" *ngIf="selectedCountry">
+                                We send over 400,000 online money transfers to {{ selectedCountry?.name }} every month.
+                            </div>
+                        </h6>
+                        <div class="row money" *ngIf="selectedCountry">
+                            <div class="col-md-5 mt-4 send-amount form-floating p-1">
+                                <input [(ngModel)]="sendAmount" (input)="convertCurr('send')" type="number" class="form-control" formControlName="sendAmount" id="floating-input" style="min-width: 100%; min-height: 8vh;" required>
+                                <label class="floating-input">Send Amount</label>
+                                <!-- <span> USD </span> -->
+                                <span style="font-size: 14px;" *ngIf="selectedCountry">Send upto {{ selectedCountry?.limit }} USD</span>
+                                <!-- <span class="error" *ngIf="receiverForm.controls['firstName'].invalid && receiverForm.controls['firstName'].touched">First Name is required!</span> -->
+                            </div>
+                            <div class="col-md-2 icon">
+                                <svg style="margin: auto 1.5em;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5"/>
+                                </svg>
+                            </div>
+                            <div class="col-md-5 send-amount form-floating p-1">
+                                <input [(ngModel)]="receivedAmount" formControlName="receivedAmount" (input)="convertCurr('receive')" type="number" class="form-control" id="floating-input" style="min-width: 100%; min-height: 8vh;" required>
+                                <label class="floating-input">Receive Amount</label>
+                                <!-- <span>{{ receivedAmount }}</span> -->
+                                <!-- <span class="error" *ngIf="receiverForm.controls['firstName'].invalid && receiverForm.controls['firstName'].touched">First Name is required!</span> -->
+                            </div>
+                        </div>
+                        <h6 class="text-black text-center" style="font-size: 18px;" *ngIf="selectedCountry"><b> 1.00 USD = {{ selectedCountry?.usd }} {{ selectedCountry?.currency }} ({{ selectedCountry?.curr }}) </b></h6>
+                        <hr class="mt-4">
+                        <h5 class="mt-4">How does your receiver want Money?</h5>
+                        <div class="row mt-4">
+                            <div class="col-md-3" *ngFor="let p of payIn">
+                                <div class="card nav-link">
+                                    <input type="radio" formControlName="payIn" [value]="p.value" [id]=p.id>
+                                    <label [for]=p.id class="card-body text-center pay-checkbox mt-3 mb-3">
+                                        <img [src]=p.img width="30" height="30">
+                                        <h6 class="mt-2" style="font-size: 14px;"><b>{{ p.name }}</b></h6>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-4">
+                        <h5 class="mt-4">How would you like to pay?</h5>
+                        <!-- <form [formGroup]="radioForm"> -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input type="radio" formControlName="payMethod" value="1" id="1" [(ngModel)]="selectPayMethod" (change)="onChange($event)"> 
+                                    <label for="1">
+                                        <b style="font-size: 18px;"> Pay online</b>
+                                    </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="radio" formControlName="payMethod" value="2" id="2" [(ngModel)]="selectPayMethod" (change)="onChange($event)">
+                                    <label for="2">
+                                        <b style="font-size: 18px;"> Pay cash in-store</b>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row mt-4" *ngIf="showPayOnline === true">
+                                <div class="col-md-3" *ngFor="let p of payOut">
+                                    <div class="card payment">
+                                        <div class="card-body">
+                                            <input type="radio" [value]="p.value" formControlName="payOut" [id]="p.id">
+                                            <label [for]="p.id" class="text-center pay-checkbox mt-3 mb-3">
+                                                <img [src]="p.img" width="30">
+                                                <h6 class="mt-2" style="font-size: 14px;"><b>{{ p.name }}</b></h6>
+                                            </label>
+                                            <div class="hl"></div>
+                                            <div class="business-fee">
+                                                <span> 1 Business Days </span>
+                                                <span><b> Fee {{ p.fee }} </b>USD</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4" *ngIf="showPayInCash === true">
+                                <div class="col-md-3">
+                                    <div class="card payment">
+                                        <div class="card-body">
+                                            <input type="checkbox" id="myCheckbox8">
+                                            <label for="myCheckbox8" class="text-center pay-checkbox mt-3 mb-3">
+                                                <img src="./../../assets/cash-coin.svg" width="30">
+                                                <h6 class="mt-2" style="font-size: 14px;"><b>Pay in-store</b></h6>
+                                            </label>
+                                            <div class="hl"></div>
+                                            <div class="business-fee">
+                                                <span> In minutes </span>
+                                                <span><b> Fee 8.00 </b>USD</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </form> -->
+                        <hr class="mt-4">
+                        <span id="promo">Apply promo/reward points</span>
+                        <hr>
+                        <button type="submit" class="continue-btn mt-4"> Continue </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 summary">
+            <div class="card" style="border: none !important;">
+                <div class="card-body">
+                    <!-- <app-summary></app-summary> -->
+                    <h3 *ngIf="!selectedCountry">Summary</h3>
+                    <div class="" *ngIf="selectedCountry">
+                        <h4 class="text-center text-black">{{ selectedCountry.name }}</h4>
+                        <p class="text-black">Exchange rate</p>
+                        <hr>
+                        <div class="usd">
+                            <h5 style="text-align: right;"> 1.00 USD = {{ selectedCountry.usd }} {{ selectedCountry.curr }} </h5>
+                        </div>
+                        <button class="rate" disabled>Best Rate</button>
+                        <hr>
+                        <div class="table">
+                            <table>
+                                <tr>
+                                    <td>Transfer Amount</td>
+                                    <td> {{ sendAmount }} </td>
+                                </tr>
+                                <tr>
+                                    <td>Transfer Fee</td>
+                                    <td>+ 0.00 USD</td>
+                                </tr>
+                                <button class="rate" disabled>100% off</button>
+                                <tr>
+                                    <td>Promo discount</td>
+                                    <td>Apply Promo</td>
+                                </tr>
+                                <tr>
+                                    <td>Transfer total</td>
+                                    <td>{{ sendAmount }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p>Total to receiver</p>
+                        <hr>
+                        <h4 style="text-align: right;">{{ receivedAmount }} {{ selectedCountry.curr }}</h4>
+                        <hr>
+                        <p>Service Time: 0-4 Business Days</p>
+                    </div>                  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

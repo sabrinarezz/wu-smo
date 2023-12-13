@@ -2,38 +2,52 @@
     <div class="container">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
-                    <a class="navbar-brand" href="#">
+                <div class="col-md-4">
+                    <span class="navbar-brand" href="#">
                         <img src="./../../../assets/wu-logo.png" alt="">
                         Western Union
-                    </a>
+                    </span>
                 </div>
-                <div class="col col-md-9">
+                <div class="col col-md-8">
                     <div class="lang">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                              <span class="nav-link" style="color: white; font-size: 15px">Send Money</span>
+                              <a routerLink="/send-money">
+                                <span class="nav-link" style="color: white; font-size: 15px">Send Money</span>
+                              </a>
                             </li>
                             <li class="nav-item">
-                                <span class="nav-link" style="color: white; font-size: 15px">Track Transfer</span>
+                                <a href="">
+                                    <span class="nav-link" style="color: white; font-size: 15px">Track Transfer</span>
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <span class="nav-link" style="color: white; font-size: 15px">Find Locations</span>
+                                <a href="">
+                                    <span class="nav-link" style="color: white; font-size: 15px">Find Locations</span>
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <span class="nav-link" style="color: white; font-size: 15px">Help</span>
+                                <a href="">
+                                    <span class="nav-link" style="color: white; font-size: 15px">Help</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
+                    <div class="vl"></div>
                     <div class="hamburger">
                         <!-- <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin-top: 0.5em;" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                         </svg> -->
                         <app-hamburger></app-hamburger>
                     </div>
+                    <div class="vl"></div>
+
                     <div class="logout">
                         <img src="./../../../assets/user.png" alt="" style="margin-left: 5px;">
-                        <button (click)="logout()">Logout</button>
+                        <div class="info">
+                            <span style="color: yellow;">SHREYA MISHRA</span>
+                            <button (click)="logout()">Logout</button>
+                        </div>
                     </div>
                 </div>
             </div>

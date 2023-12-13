@@ -10,18 +10,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  loginForm!: FormGroup;
+  // loginForm!: FormGroup;
+
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl('')
+  });
 
   constructor( private as: AuthService, private router: Router ) {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', {
-        validators: [Validators.required, Validators.email]
-      }),
-      password: new FormControl('', { 
-        validators: [Validators.required]
-      })
-    }
-    );
+    console.log('loginform: ', this.loginForm.invalid);
   }
 
   onSubmit(form: NgForm) {

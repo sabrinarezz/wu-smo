@@ -5,6 +5,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment.development';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestoreModule, DocumentChangeAction, DocumentData, DocumentReference } from '@angular/fire/compat/firestore';
 import { Observable, of } from 'rxjs';
+import { Receivers } from '../models/receivers.model';
 
 describe('ReceiversService', () => {
   let service: ReceiversService;
@@ -106,7 +107,7 @@ describe('ReceiversService', () => {
  
   // it('should load a specific receiver', () => {
   //   const receiverId = 'rN8NwX796dU4LtVdJNL3';
-  //   const mockReceiverData = { 
+  //   const mockReceiverData: Receivers = { 
   //     firstName: 'Chloe',
   //     middleName: 'Jane',
   //     lastName: 'Decker',
@@ -123,7 +124,7 @@ describe('ReceiversService', () => {
   //     expect(receiver).toEqual(mockReceiverData);
   //   });
  
-  //   expect(collectionMock.doc).toHaveBeenCalledWith(receiverId);
+    // expect(collectionMock.doc).toHaveBeenCalledWith(receiverId);
   // });
  
   // it('should update data', () => {

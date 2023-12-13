@@ -1,0 +1,147 @@
+form {
+    margin-top: 1.5em;
+
+    #promo {
+        font-size: 12px;
+        color: #09678c;
+        margin: 5px;
+    }
+
+    .form-floating, .form-control {
+        border-radius: 3px !important;
+    }
+
+    .money {
+        justify-content: space-evenly;
+        align-items: center;
+        margin: auto 0px;
+        // position: relative;
+    }
+
+    .sub-script {
+        margin-top: 5px;
+        color: #316025;
+        font-size: 14px;
+    }
+
+    .upi {
+        height: 50%;
+        width: 50%;
+    }
+
+    .visa {
+        height: 100%;
+        width: 100%;
+    }
+
+    .nav-link {
+        border: 2px solid black !important;
+        cursor: pointer;
+        display: inline-block !important;
+        height: 8em;
+
+        &:hover {
+            border: 2px solid #09678c !important;
+            background: #09678c !important;
+            color: white !important;
+            // border-top: 2px solid white !important;
+        }
+    }
+}
+
+input[type="checkbox"][id^="myCheckbox"] {
+  display: none;
+}
+  
+.pay-checkbox {
+// border: 1px solid #fff;
+// padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.pay-checkbox:before {
+  // background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  // border: 1px solid grey;
+  position: absolute;
+  top: -25%;
+  left: 95%;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+.pay-checkbox svg {
+  // height: 100px;
+  // width: 100px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+:checked + .pay-checkbox {
+  border-color: #ddd;
+  // background-color: #09678c;
+}
+
+:checked + .pay-checkbox:before {
+  content: "✓";
+  background-color: rgb(2, 180, 2);
+  transform: scale(1);
+  // background-color: #09678c;
+}
+
+:checked + .pay-checkbox svg {
+  transform: scale(0.9);
+  /* box-shadow: 0 0 5px #333; */
+  z-index: -1;
+}
+
+.hl {
+    border-top: 2px solid black;
+    border-radius: 0;
+    width: 7em;
+    // top: -25%;
+}
+
+.payment {
+    height: 10em;
+    border: 2px solid black !important;
+    cursor: pointer;
+    display: inline-block !important;
+    &:hover {
+        border: 2px solid #09678c !important;
+        background: #09678c !important;
+        color: white !important;
+        // border-top: 2px solid white !important;
+    }
+
+    .business-fee {
+        span {
+            font-size: 11px;
+            margin-left: 1.3em;
+        }
+    }
+}
+
+.continue-btn {
+    border: none;
+    background-color: #09678c;
+    height: 8vh !important;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+
+    &:hover {
+        background-color: #085675;
+        border: 2px solid black !important;
+    }
+}

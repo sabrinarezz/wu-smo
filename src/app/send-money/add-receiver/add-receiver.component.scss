@@ -1,0 +1,46 @@
+.continue-btn {
+    // border: 2px solid black;
+    width: 100%;
+}
+
+.error {
+    color: red;
+}
+
+.r-info {
+    border: 2px solid #045F86;
+    height: 8vh;
+    width: 104.8%;
+    margin-left: -20px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 2px 2px 2px #045274;
+    // justify-content: space-between;
+    
+    p, svg {
+        margin-top: 0.5em;
+        padding: 5px;
+    }
+}
+
+.bank-info {
+    // border: 1px solid #045274;
+    background-color: #e4e4e4;
+}
+
+.receiver-container {
+    // border: 2px solid yellow;
+    width: 80%;
+    left: 10%;
+    border-radius: 0;
+    // align-items: center;
+    // justify-content: center;
+}
+
+.save-btn {
+    border: none;
+    background-color: #045F86;
+    color: white;
+    width: 100%;
+    height: 8vh;
+}

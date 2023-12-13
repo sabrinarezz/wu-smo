@@ -14,8 +14,23 @@
             justify-content: space-between;
             // cursor: pointer;
 
+            .container {
+                border: 2px solid yellow;
+
+                .link {
+                    color: #0A7099;
+                }
+            }
+
+            img {
+                // position: absolute;
+                height: 50px;
+                width: 50px;
+                margin-top: 0.4em;
+            }
+
             h5 {
-                margin-top: 0.6em;
+                margin-top: 0.8em;
             }
 
             .icons {
@@ -25,7 +40,12 @@
                 // margin-left: -500px;
             }
 
-            .delete {
+            .details {
+                display: flex;
+            }
+
+            .delete, .edit {
+                // position: absolute;
                 color: #0A7099;
                 // text-align: center;
                 // margin-left: 15px;
@@ -59,24 +79,25 @@
     }
 }
 
-.dropdown {
+.show {
     // border: 2px solid yellow;
-    // padding: 10px;
+    border: none !important;
+    background: none !important;
+    color: #0A7099;
+    font-size: 16px;
+    // width: 200px;
+    margin-top: 0.8em;
+}
 
-    .dropdown-container {
-        // border: 2px solid yellow;
-        position: absolute;
-        top: 35px;
-       
-        // .dropdown-menu {
-        //     display: flex;
-        //     flex-direction: row;
-        // }
-    }
+.details {
+    // border: 2px solid yellow;
+    display: flex;
+    // justify-content: space-evenly;
+    // align-items: center;
+    // margin-left: 4em;
+    margin: auto 7em;
+}
 
-    button {
-        border: none;
-        background: none;
-        color: #0A7099;
-    }
+.no-receiver {
+    margin-left: 12em;
 }

@@ -1,0 +1,188 @@
+<h4>Send Money Online</h4>
+<form [formGroup]="sendMoneyForm">
+    <h5>Your receiver's country and send money</h5>
+    <div class="card form-floating">
+        <select [(ngModel)]="selectedCountry" (change)="onCountrySelected()" class="form-control" #country formControlName="country">
+            <option *ngFor="let c of countries" [ngValue]="c">{{ c.name }}</option>
+        </select>
+        <label class="floating-input" style="font-size: 14px;"><b>Send to</b></label>
+    </div>
+    <h6 class="sub-script">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-brightness-low" viewBox="0 0 16 16">
+            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8m.5-9.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707m-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707m7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707M3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707"/>
+        </svg>
+        <div class="" *ngIf="selectedCountry">
+            We send over 400,000 online money transfers to {{ selectedCountry?.name }} every month.
+        </div>
+    </h6>
+    <div class="row money" *ngIf="selectedCountry">
+        <div class="col-md-5 mt-4 send-amount form-floating p-1">
+            <input [(ngModel)]="sendAmount" (input)="convertCurr('send')" type="number" class="form-control" formControlName="sendAmount" id="floating-input" style="min-width: 100%; min-height: 8vh;" required>
+            <label class="floating-input">Send Amount</label>
+            <!-- <span> USD </span> -->
+            <span style="font-size: 14px;" *ngIf="selectedCountry">Send upto {{ selectedCountry?.limit }} USD</span>
+            <!-- <span class="error" *ngIf="receiverForm.controls['firstName'].invalid && receiverForm.controls['firstName'].touched">First Name is required!</span> -->
+        </div>
+        <div class="col-md-2 icon">
+            <svg style="margin: auto 1.5em;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5"/>
+            </svg>
+        </div>
+        <div class="col-md-5 send-amount form-floating p-1">
+            <input [(ngModel)]="receiveAmount" (input)="convertCurr('receive')" type="number" class="form-control" id="floating-input" style="min-width: 100%; min-height: 8vh;" required>
+            <label class="floating-input">Receive Amount</label>
+            <!-- <span>{{ receiveAmount }}</span> -->
+            <!-- <span class="error" *ngIf="receiverForm.controls['firstName'].invalid && receiverForm.controls['firstName'].touched">First Name is required!</span> -->
+        </div>
+    </div>
+    <h6 class="text-black text-center" style="font-size: 18px;" *ngIf="selectedCountry"><b> 1.00 USD = {{ selectedCountry?.usd }} {{ selectedCountry?.currency }} </b></h6>
+    <hr class="mt-4">
+    <h5 class="mt-4">How does your receiver want Money?</h5>
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="card nav-link">
+                <input type="checkbox" id="myCheckbox1">
+                <label for="myCheckbox1" class="card-body text-center pay-checkbox mt-3 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/>
+                        <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+                        <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"/>
+                        <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+                    </svg>
+                    <h6 class="mt-2" style="font-size: 14px;"><b>Cash pick up</b></h6>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card nav-link">
+                <input type="checkbox" id="myCheckbox2">
+                <label for="myCheckbox2" class="card-body text-center pay-checkbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bank2" viewBox="0 0 16 16">
+                        <path d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6zm-2.5 0v7h-1.25V6zm-2.5 0v7h-1.25V6zm-2.5 0v7h-1.25V6zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2M.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1z"/>
+                    </svg>
+                    <h6 class="mt-2" style="font-size: 14px;"><b>Bank account</b></h6>
+                    <img class="upi" src="https://arpitatulsyan.com/wp-content/uploads/2020/03/upi-logo-png-4.png" alt="">
+                </label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card nav-link">
+                <input type="checkbox" id="myCheckbox3">
+                <label for="myCheckbox3" class="card-body text-center pay-checkbox mt-3 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+                        <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/>
+                    </svg>
+                    <h6 class="mt-2" style="font-size: 14px;"><b>Mobile wallet</b></h6>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card nav-link">
+                <input type="checkbox" id="myCheckbox4">
+                <label for="myCheckbox4" class="card-body text-center pay-checkbox mt-3 mb-3">
+                    <img class="visa" src="data:image/png;base64,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" alt="">
+                    <h6 class="mt-2" style="font-size: 14px;"><b>Debit Card</b></h6>
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr class="mt-4">
+    <h5 class="mt-4">How would you like to pay?</h5>
+    <form [formGroup]="radioForm">
+        <div class="row">
+            <div class="col-md-3">
+                <input type="radio" value="1" formControlName="radio" id="" [(ngModel)]="selectPayMethod" (change)="onChange($event)"> 
+                <span>
+                    <b style="font-size: 18px;"> Pay online</b>
+                </span>
+            </div>
+            <div class="col-md-4">
+                <input type="radio" value="2" formControlName="radio" id="" [(ngModel)]="selectPayMethod" (change)="onChange($event)">
+                <span>
+                    <b style="font-size: 18px;"> Pay cash in-store</b>
+                </span>
+            </div>
+        </div>
+        <div class="row mt-4" *ngIf="showPayOnline">
+            <div class="col-md-3">
+                <div class="card payment">
+                    <div class="card-body">
+                        <input type="checkbox" id="myCheckbox5">
+                        <label for="myCheckbox5" class="text-center pay-checkbox mt-3 mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-credit-card-2-front" viewBox="0 0 16 16">
+                                <path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
+                                <path d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
+                            </svg>
+                            <h6 class="mt-2" style="font-size: 14px;"><b>Credit Card</b></h6>
+                        </label>
+                        <div class="hl"></div>
+                        <div class="business-fee">
+                            <span> 1 Business Days </span>
+                            <span><b> Fee 15.00 </b>USD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card payment">
+                    <div class="card-body">
+                        <input type="checkbox" id="myCheckbox6">
+                        <label for="myCheckbox6" class="text-center pay-checkbox mt-3 mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-credit-card-2-front" viewBox="0 0 16 16">
+                                <path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
+                                <path d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
+                            </svg>
+                            <h6 class="mt-2" style="font-size: 14px;"><b>Debit Card</b></h6>
+                        </label>
+                        <div class="hl"></div>
+                        <div class="business-fee">
+                            <span> 1 Business Days </span>
+                            <span><b> Fee 0.00 </b>USD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card payment">
+                    <div class="card-body">
+                        <input type="checkbox" id="myCheckbox7">
+                        <label for="myCheckbox7" class="text-center pay-checkbox mt-3 mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bank2" viewBox="0 0 16 16">
+                                <path d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6zm-2.5 0v7h-1.25V6zm-2.5 0v7h-1.25V6zm-2.5 0v7h-1.25V6zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2M.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1z"/>
+                            </svg>
+                            <h6 class="mt-2" style="font-size: 14px;"><b>Bank account</b></h6>
+                        </label>
+                        <div class="hl"></div>
+                        <div class="business-fee">
+                            <span> 0-4 Business Days </span>
+                            <span><b> Fee 0.00 </b>USD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4" *ngIf="showPayInCash">
+            <div class="col-md-3">
+                <div class="card payment">
+                    <div class="card-body">
+                        <input type="checkbox" id="myCheckbox8">
+                        <label for="myCheckbox8" class="text-center pay-checkbox mt-3 mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/>
+                                <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+                                <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"/>
+                                <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+                            </svg>
+                            <h6 class="mt-2" style="font-size: 14px;"><b>Cash pick up</b></h6>
+                        </label>
+                        <div class="hl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr class="mt-4">
+    <span id="promo">Apply promo/reward points</span>
+    <hr>
+</form>
+<button class="continue-btn mt-4"> Continue </button>

@@ -1,0 +1,72 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body mb-3">
+            <h5 class="mt-4">Review and Confirm</h5>
+            <h6 class="mt-3">This is not a receipt</h6>
+            <div class="row">
+                <div class="col-md-6" *ngFor="let s of smoArray">
+                    <h6 class="mt-5">SENDING DETAILS</h6>
+                    <hr>
+                    <div class="sender">
+                        <img src="./../../../assets/flag.png" width="50">
+                        <h5 class="m-2">SHREYA MISHRA</h5>
+                    </div>
+                    <h5 class="mt-4">{{ s.data.payOut }}</h5>
+                    <div class="mt-5">
+                        <h6 class="mt-5">EXPECTED FOREIGN COUNTRY PAYOUT LOCATION</h6>
+                        <hr>
+                        <h6>{{ s.data.country.name }}</h6>
+                    </div>
+                    <div class="mt-5">
+                        <h6 class="mt-5">DELIVERY TIME</h6>
+                        <hr>
+                        <h6>0-4 Business Days</h6>
+                    </div>
+                </div>
+                <div class="col-md-6" *ngFor="let s of smoArray">
+                    <h6 class="mt-5">RECEIVING DETAILS</h6>
+                    <hr>
+                    <div class="receiver" *ngFor="let r of receiverArray">
+                        <h5 class="m-2">{{ r.data.firstName }} {{ r.data.middleName }} {{ r.data.lastName }}</h5>
+                    </div>
+                    <h5 class="mt-4">{{ s.data.payIn }}</h5>
+                    <p *ngIf="s.data.payIn === 'Cash Pick Up'">
+                        Final receiver must present government-issued ID. Make sure Final Receiver name matches ID exactly.
+                    </p>
+                    <div class="mt-5">
+                        <h6 class="mt-5">SUMMARY</h6>
+                        <hr>
+                        <table>
+                            <tr>
+                                <td id="col1">Transfer Amount</td>
+                                <td id="col2">{{ s.data.sendAmount }} USD</td>
+                            </tr>
+                            <tr>
+                                <td id="col1">Transfer Fee</td>
+                                <td id="col2">+ 0.00 USD</td>
+                            </tr>
+                            <tr>
+                                <td id="col1">Total</td>
+                                <td id="col2">{{ s.data.sendAmount }} USD</td>
+                            </tr>
+                            <tr>
+                                <td id="col1">Exchange Rate</td>
+                                <td id="col2">1.00 USD = {{ s.data.country.usd }} {{ s.data.country.curr }}</td>
+                            </tr>
+                            <hr>
+                            <tr>
+                                <td id="col1">Transfer Amount</td>
+                                <td id="col2">{{ s.data.receivedAmount }} {{ s.data.country.curr }}</td>
+                            </tr>
+                            <hr>
+                            <tr>
+                                <td id="col1">Total to Final Receiver</td>
+                                <td id="col2">{{ s.data.receivedAmount }} {{ s.data.country.curr }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

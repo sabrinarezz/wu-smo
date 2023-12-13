@@ -16,6 +16,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditReceiverComponent } from './edit-receiver/edit-receiver.component';
 import { HamburgerComponent } from './layouts/hamburger/hamburger.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { SendMoneyComponent } from './send-money/send-money.component';
+import { SendComponent } from './send-money/send/send.component';
+import { SummaryComponent } from './send-money/summary/summary.component';
+import { AddReceiverComponent } from './send-money/add-receiver/add-receiver.component';
+import { ReviewComponent } from './send-money/review/review.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,12 @@ import { DropdownModule } from 'primeng/dropdown';
     ReceiversComponent,
     AddReceiversComponent,
     EditReceiverComponent,
-    HamburgerComponent
+    HamburgerComponent,
+    SendMoneyComponent,
+    SendComponent,
+    SummaryComponent,
+    AddReceiverComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
